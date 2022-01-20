@@ -9,16 +9,13 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
         // the next )
-        int currentIndex = 0;
-        while(currentIndex < markdown.length()) {
-            int nextOpenBracket = markdown.indexOf("[", currentIndex);
-            int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
-            int openParen = markdown.indexOf("(", nextCloseBracket);
-            int closeParen = markdown.indexOf(")", openParen);
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
-            currentIndex = closeParen + 1;
-            System.out.println(currentIndex);
+        //int currentIndex = 0;
+        String[] contentsArray = markdown.split("\n");
+        for(String s: contentsArray){
+            if(s.contains("[") && s.contains("]") && s.contains("(") && s.contains(")") && !s.startsWith("!"))
+                toReturn.add(s.substring(s.indexOf("(")+1, s.length()));
         }
+
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
