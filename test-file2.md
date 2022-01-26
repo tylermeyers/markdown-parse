@@ -1,5 +1,9 @@
 # Title
 
-[This is a link](somelink[]().com)
+[a link!](https://something.com)
 
-this is just text with brackets [] and parenthesis ()
+i enjoy the beach[la jolla shores]
+
+[another link!](some-page.html)
+
+where do i find the store

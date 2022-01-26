@@ -1,3 +1,6 @@
-[exampleLink](https://www.parenthesis().com)
+# Title
 
-This is just a paragraph but ] it has brackets []
+[a link!](https://[]something.com)
+[another link!](some-page.html)
+
+where do i find the store
