@@ -30,7 +30,7 @@ public class MarkdownParse {
         return toReturn;
     }
     public static boolean isOfLinkForm(String s){
-        return s.contains("[") && s.contains("]") && s.contains("(") && s.contains(")");
+        return s.contains("[") && s.contains("]") && s.contains("(") && s.contains(")") && !s.startsWith("!");
     }
     public static void main(String[] args) throws IOException {
 		Path fileName = Path.of(args[0]);
