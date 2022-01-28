@@ -10,29 +10,7 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then take up to
         // the next )
 
-        /* String[] contentsArray = markdown.split("\n");
-        for(String s: contentsArray){
-            if(s.contains("[") && s.contains("]") && s.contains("(") && s.contains(")") && !s.startsWith("!"))
-                toReturn.add(s.substring(s.indexOf("(")+1, s.length()-1));
-        }
-
-        return toReturn; */
         int currentIndex = 0;
-        /*
-        String[] contentsArray = markdown.split("\n");
-        for(String s: contentsArray){
-            if(s.indexOf("[")==0){
-                while(currentIndex < markdown.length()) {
-                    int nextOpenBracket = markdown.indexOf("[", currentIndex);
-                    int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
-                    int openParen = markdown.indexOf("(", nextCloseBracket);
-                    int closeParen = markdown.indexOf(")", openParen);
-                    toReturn.add(markdown.substring(openParen + 1, closeParen));
-                    currentIndex = closeParen + 1;
-                }
-            }
-        } */
-
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
@@ -41,7 +19,6 @@ public class MarkdownParse {
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
-        //*/
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
