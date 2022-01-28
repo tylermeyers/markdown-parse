@@ -9,7 +9,14 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
         // the next )
-
+        
+        String[] contentsArray = markdown.split("\n");
+        for(String s: contentsArray){
+            if(isOfLinkForm(s))
+                toReturn.add(s.substring(s.indexOf("(")+1, s.length()-1));
+        }
+        /* Original Code
+        -----------------------
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
@@ -19,7 +26,11 @@ public class MarkdownParse {
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
+        //*/
         return toReturn;
+    }
+    public static boolean isOfLinkForm(String s){
+        return s.contains("[") && s.contains("]") && s.contains("(") && s.contains(")");
     }
     public static void main(String[] args) throws IOException {
 		Path fileName = Path.of(args[0]);
