@@ -33,6 +33,7 @@ public class MarkdownParse {
             currentIndex = closeParen + 1;
         }
         //*/
+        System.out.println(toReturn.size());
         return toReturn;
     }
     public static boolean isOfLinkForm(String s){
