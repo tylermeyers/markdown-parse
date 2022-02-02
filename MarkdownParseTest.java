@@ -10,6 +10,7 @@ public class MarkdownParseTest {
     public void addition(){
         assertEquals(2, 1+1);
     }
+    ArrayList<String> emptyArrayList = new ArrayList<>();
 
     @Test
     public void getLinksBreakFile() throws IOException{
@@ -75,6 +76,13 @@ public class MarkdownParseTest {
     }
 
     @Test
+    public void getLinksTest9() throws IOException{
+        Path fileName = Path.of("test-file9.md");
+        String contents = Files.readString(fileName);
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
+    }
+
+    @Test
     public void getLinksJoeTest1() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file.md");
         String contents = Files.readString(fileName);
@@ -92,41 +100,41 @@ public class MarkdownParseTest {
     public void getLinksJoeTest3() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file3.md");
         String contents = Files.readString(fileName);
-        assertEquals(List.of(), MarkdownParse.getLinks(contents));
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void getLinksJoeTest4() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file4.md");
         String contents = Files.readString(fileName);
-        assertEquals(List.of(), MarkdownParse.getLinks(contents));
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void getLinksJoeTest5() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file5.md");
         String contents = Files.readString(fileName);
-        assertEquals(List.of(), MarkdownParse.getLinks(contents));
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void getLinksJoeTest6() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file6.md");
         String contents = Files.readString(fileName);
-        assertEquals(List.of(), MarkdownParse.getLinks(contents));
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void getLinksJoeTest7() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file7.md");
         String contents = Files.readString(fileName);
-        assertEquals(List.of(), MarkdownParse.getLinks(contents));
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void getLinksJoeTest8() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file8.md");
         String contents = Files.readString(fileName);
-        assertEquals(List.of(), MarkdownParse.getLinks(contents));
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 }

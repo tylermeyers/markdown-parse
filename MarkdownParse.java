@@ -43,7 +43,7 @@ public class MarkdownParse {
         //this obtains the whole container like [Link]
         if (firstBracket >= 0 && secondBracket >= 0 && secondBracket > firstBracket)
             linkContainer = s.substring(firstBracket,secondBracket+1);
-        //link container would be valid if it's length is greater than 2 (it's not just "[]")
+        //link container would be valid if its length is greater than 2 (it's not just "[]")
         if(linkContainer.length() > 2)
             containerGood = true;
 
