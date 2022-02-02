@@ -14,7 +14,9 @@ public class MarkdownParse {
         //if so, add the solely the link into the return ArrayList
         for(String s: contentsArray){
             if(isOfLinkForm(s))
-                toReturn.add(s.substring(s.indexOf("(")+1, s.length()-1));
+                toReturn.add(s.substring(s.indexOf("(")+1, s.lastIndexOf(")")));
+                //using lastIndexOf() to fix a whitespace issue (I think) on
+                //windows
         }
         /* Original Code
         -----------------------
