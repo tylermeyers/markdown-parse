@@ -33,22 +33,35 @@ public class MarkdownParse {
             currentIndex = closeParen + 1;
         }
         //*/
-        System.out.println(toReturn.size());
+        //System.out.println(toReturn.size());
         return toReturn;
     }
     public static boolean isOfLinkForm(String s){
         int firstBracket = s.indexOf("[");
-        int secondBracket = s.indexOf("]");
+        int pivotalSeq = s.indexOf("](");
         boolean containerGood = false;
         String linkContainer = "";
         //this obtains the whole container like [Link]
-        if (firstBracket >= 0 && secondBracket >= 0 && secondBracket > firstBracket)
-            linkContainer = s.substring(firstBracket,secondBracket+1);
-        //link container would be valid if its length is greater than 2 (it's not just "[]")
-        if(linkContainer.length() > 2)
-            containerGood = true;
+        if (firstBracket >=0 && pivotalSeq > firstBracket)
+            linkContainer = s.substring(firstBracket,pivotalSeq+1);
+        //Check linkContainer against container parameters
+        containerGood = checkLinkContainer(linkContainer);
 
         return containerGood && s.contains("(") && s.contains(")") && !s.startsWith("!");
+    }
+
+    public static boolean checkLinkContainer(String container){
+        int numOpenBrackets = 0;
+        int numClosedBrackets = 0;
+        String toParse = container;
+        for (int i = 0; i < toParse.length(); i++){
+            if(toParse.substring(i,i+1).equals("["))
+                numOpenBrackets++;
+            else if(toParse.substring(i,i+1).equals("]"))
+                numClosedBrackets++;
+        }
+        return container.length() > 2 && numOpenBrackets >= 1 &&
+            numClosedBrackets >= 1 && numOpenBrackets >= numClosedBrackets;
     }
     public static void main(String[] args) throws IOException {
 		Path fileName = Path.of(args[0]);

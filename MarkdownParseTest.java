@@ -65,7 +65,7 @@ public class MarkdownParseTest {
     public void getLinksTest7() throws IOException{
         Path fileName = Path.of("test-file7.md");
         String contents = Files.readString(fileName);
-        assertEquals(List.of("something.com"), MarkdownParse.getLinks(contents));
+        assertEquals(List.of("something.com", "something.com", "something.com"), MarkdownParse.getLinks(contents));
     }
 
     @Test
@@ -79,14 +79,14 @@ public class MarkdownParseTest {
     public void getLinksTest9() throws IOException{ //this returns an ArrayList with the empty string
         Path fileName = Path.of("test-file9.md");
         String contents = Files.readString(fileName);
-        assertEquals(MarkdownParse.getLinks(contents), List.of(""));
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 
     @Test
-    public void getLinksTest10() throws IOException{ //this returns an ArrayList with the empty string
+    public void getLinksTest10() throws IOException{ //markdown does not format this as a link
         Path fileName = Path.of("test-file10.md");
         String contents = Files.readString(fileName);
-        assertEquals(MarkdownParse.getLinks(contents), emptyArrayList);
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
     }
 
     @Test
