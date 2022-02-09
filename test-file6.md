@@ -1,3 +1,1 @@
-# title 
-
-![link](page.com)
+[[link]](something.com)
