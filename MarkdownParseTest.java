@@ -90,6 +90,14 @@ public class MarkdownParseTest {
     }
 
     @Test
+    public void getLinksTest11() throws IOException{ //markdown does not format this as a link
+        Path fileName = Path.of("test-file11.md");
+        String contents = Files.readString(fileName);
+        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents)); //this one runs fine when it's compared against an empty StringArrayList
+        assertEquals(MarkdownParse.getLinks("[]()"), (List<String>) List.of("")); //this throws an error
+    }
+
+    @Test
     public void getLinksJoeTest1() throws IOException{
         Path fileName = Path.of("./joe-test-files/test-file.md");
         String contents = Files.readString(fileName);
