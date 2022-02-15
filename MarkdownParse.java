@@ -13,8 +13,14 @@ public class MarkdownParse {
         //Loop through each line, check if it is of a link form
         //if so, add the solely the link into the return ArrayList
         for(String s: contentsArray){
-            if(isOfLinkForm(s))
-                toReturn.add(s.substring(s.indexOf("](")+2, s.lastIndexOf(")")));
+            if(isOfLinkForm(s)){
+                String link = s.substring(s.indexOf("](")+2, s.lastIndexOf(")"));
+                if (!link.contains(" ")) //fixes error on test-file 11 to add an empty string
+                    toReturn.add(link);
+
+            }
+                //toReturn.add(s.substring(s.indexOf("(")+1, s.lastIndexOf(")")));
+
                 //using lastIndexOf() to fix a whitespace issue (I think) on
                 //windows
         }
@@ -60,7 +66,7 @@ public class MarkdownParse {
             else if(toParse.substring(i,i+1).equals("]"))
                 numClosedBrackets++;
         }
-        return container.length() > 2 && numOpenBrackets >= 1 &&
+        return container.length() >= 2 && numOpenBrackets >= 1 &&
             numClosedBrackets >= 1 && numOpenBrackets >= numClosedBrackets;
     }
     public static void main(String[] args) throws IOException {

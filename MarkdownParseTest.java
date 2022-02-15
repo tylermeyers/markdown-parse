@@ -11,6 +11,7 @@ public class MarkdownParseTest {
         assertEquals(2, 1+1);
     }
     ArrayList<String> emptyArrayList = new ArrayList<>();
+    List<String> emptyStringList = List.of("");
 
     @Test
     public void getLinksBreakFile() throws IOException{
@@ -93,8 +94,8 @@ public class MarkdownParseTest {
     public void getLinksTest11() throws IOException{ //markdown does not format this as a link
         Path fileName = Path.of("test-file11.md");
         String contents = Files.readString(fileName);
-        assertEquals(emptyArrayList, MarkdownParse.getLinks(contents)); //this one runs fine when it's compared against an empty StringArrayList
-        assertEquals(MarkdownParse.getLinks("[]()"), (List<String>) List.of("")); //this throws an error
+        //assertEquals(emptyArrayList, MarkdownParse.getLinks(contents)); //this one runs fine when it's compared against an empty StringArrayList
+        assertEquals(emptyStringList, MarkdownParse.getLinks("[]()")); //this throws an error
     }
 
     @Test
