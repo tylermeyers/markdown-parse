@@ -11,6 +11,7 @@ public class MarkdownParseTest {
         assertEquals(2, 1+1);
     }
     ArrayList<String> emptyArrayList = new ArrayList<>();
+    List<String> emptyStringList = List.of("");
 
     @Test
     public void getLinksBreakFile() throws IOException{
@@ -60,14 +61,13 @@ public class MarkdownParseTest {
         String contents = Files.readString(fileName);
         assertEquals(List.of("something.com"), MarkdownParse.getLinks(contents));
     }
-    /*
+
     @Test
     public void getLinksTest7() throws IOException{
         Path fileName = Path.of("test-file7.md");
         String contents = Files.readString(fileName);
         assertEquals(List.of("something.com", "something.com", "something.com"), MarkdownParse.getLinks(contents));
     }
-    //*/
 
     @Test
     public void getLinksTest8() throws IOException{
@@ -88,6 +88,21 @@ public class MarkdownParseTest {
         Path fileName = Path.of("test-file10.md");
         String contents = Files.readString(fileName);
         assertEquals(emptyArrayList, MarkdownParse.getLinks(contents));
+    }
+
+    @Test
+    public void getLinksTest11() throws IOException{ //markdown does not format this as a link
+        Path fileName = Path.of("test-file11.md");
+        String contents = Files.readString(fileName);
+        //assertEquals(emptyArrayList, MarkdownParse.getLinks(contents)); //this one runs fine when it's compared against an empty StringArrayList
+        assertEquals(emptyStringList, MarkdownParse.getLinks("[]()")); //this throws an error
+    }
+
+    @Test
+    public void getLinksTest12() throws IOException{ //markdown does not format this as a link
+        Path fileName = Path.of("test-file12.md");
+        String contents = Files.readString(fileName);
+        assertEquals(List.of("a-link.html"), MarkdownParse.getLinks(contents));
     }
 
     @Test
